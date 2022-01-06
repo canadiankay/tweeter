@@ -27,6 +27,7 @@ html {
  */
 
  .container {
+  /*color: #545149; -- NO NEED TO ADD THIS SINCE BODY IS SET TO COLOR */
   display: flex;
   position: relative;
   width: 90%;
