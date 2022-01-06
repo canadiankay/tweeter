@@ -6,8 +6,8 @@
   color: #ffffff;
   display: flex;
   justify-content: space-between;
-  position: relative;
-  z-index: 1;
+  position: fixed;
+  top: 0;
 }
 
 

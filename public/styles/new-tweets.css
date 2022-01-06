@@ -51,7 +51,9 @@ textarea {
   display: flex;
   font-family: 'Bungee', 'sans-serif';
 } 
-
+.exceedLimit {
+  color: red;
+} 
 /* --------- */
 
 
