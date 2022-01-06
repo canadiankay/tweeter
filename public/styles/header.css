@@ -1,0 +1,16 @@
+.header {
+  height: 400px;
+  width: 100%;
+  background-color: #f074009d;
+  background-image: url(http://www.transparenttextures.com/patterns/bright-squares.png);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-flow: column wrap;
+} 

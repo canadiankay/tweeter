@@ -2,15 +2,18 @@
 .nav-bar {
   background-color: #4056A1;
   height: 120px;
+  width: 100%;
   color: #ffffff;
   display: flex;
   justify-content: space-between;
+  position: relative;
+  z-index: 1;
 }
+
 
 #nav-logo {
   font-family: 'Bungee', cursive;
   margin: 1.5em;
-  /* font-size: larger; */
   font-size: 50px;
   display: flex;
   align-items: center;
@@ -24,8 +27,10 @@
   align-items: center;
 }
 
-#double-down {
+#arrow-down-icon {
   display: flex;
   align-items: center;
   color: red;
+  size: 1000px;
 }
+
