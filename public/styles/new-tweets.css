@@ -55,6 +55,18 @@ textarea {
 .exceedLimit {
   color: red;
 } 
+
+#error {
+  display: none;
+  color: #6200ff;
+  float: center;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: #ffc40033;
+  border: 1px solid #ff00aa02;
+  
+
+}
 /* --------- */
 
 

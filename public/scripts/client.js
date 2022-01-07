@@ -55,26 +55,52 @@ $(document).ready(function() {
   };
 });
 
+//AJAX call to fetch/load tweets
+const loadTweets = function() {
+  //const url = "http://localhost:8080/tweets";
+  $.get("/tweets", function(data) {
+    renderTweets(data.responseJSON);
+  });
+  $("#tweets-container").slideDown();
+};
+
+//loads initial tweets on refresh
+loadTweets();
+
 //event handler for submitting new tweets 
 $(document).ready(function() {
   $('.tweet-form').submit(function(event) {
     event.preventDefault();
+    //we don't want an error box if we are submitting a tweet 
+    $("#error").slideUp()
+
+
     /*The user should be given an error that their tweet content is too long or that it is not present
     (ideally separate messages for each scenario)
     The form should not be cleared
     The form should not submit*/ 
 
+
     const tweetLength = $('#tweet-text').val().length;
 
     //empty tweet
     if (!tweetLength) {
-      alert("This is a blank tweet!");
+      $("#error").slideDown("slow");
+      $("#error").html("You cannot submit an empty tweet. C'mon pour your heart out!");
+      setTimeout(function() {
+        $("#error").slideUp("fast", "linear");
+      }, 3000);
       return;
     }
+  
 
     // if tweet exceeds character limit
     if (tweetLength > 140) {
-      alert("This tweet exceeds the character limit!");
+      $("#error").slideDown("slow");
+      $("#error").html("Your tweet is too long! C'mon now, I know you can write more concisely.");
+      setTimeout(function() {
+        $("#error").slideUp("fast", "linear");
+      }, 3000);
       return;
     }
 
@@ -95,16 +121,7 @@ $(document).ready(function() {
 
   
 
-  //AJAX call to fetch/load tweets
-  const loadTweets = function() {
-    //const url = "http://localhost:8080/tweets";
-    $.get("/tweets", function(data) {
-      renderTweets(data.responseJSON);
-    });
-  };
 
-  //loads initial tweets on refresh
-  loadTweets();
 
 
 
