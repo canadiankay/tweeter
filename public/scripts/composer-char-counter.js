@@ -4,7 +4,7 @@ $(document).ready(function() {
   $('#tweet-text').on('input', function() {
     let numOfChars = $(this).val().length;
     let charsRemaining = 140 - numOfChars;
-    let counter = $(this).closest('form').children('.button-box').children('.counter');
+    let counter = $('.counter');
     
     counter.text(charsRemaining)
 
