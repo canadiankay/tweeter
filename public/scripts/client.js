@@ -4,6 +4,13 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// escape function that prevents cross-site scripting
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 // this function creates a new tweet
 const createTweetElement = function(tweet) {
   const time = timeago.format(tweet.created_at);
@@ -19,7 +26,7 @@ const createTweetElement = function(tweet) {
     </header>      
 
     <div class="tweetText">
-    ${tweet.content.text}
+    ${escape(tweet.content.text)}
     </div>    
 
     <footer class="tweetTime">
