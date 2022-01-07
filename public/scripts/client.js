@@ -75,6 +75,19 @@ const data = [
   });
 };
 
+//ajax post request for event listener 
+$(document).ready(function() {
+  $('.tweet-form').submit(function(event) {
+    event.preventDefault();
+    const dataForm = $(this).serialize();
+    $.post("http://localhost:8080/tweets/", dataForm, function(data) {
+      console.log(dataForm);
+    });
+  });
+}); 
+
+
+
 
 renderTweets(data);
 
