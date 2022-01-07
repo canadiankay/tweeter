@@ -60,10 +60,10 @@ textarea {
   display: none;
   color: #6200ff;
   float: center;
-  padding: 10px;
-  margin-top: 10px;
-  background-color: #ffc40033;
-  border: 1px solid #ff00aa02;
+  padding: 30px;
+  margin-top: 20px;
+  background-color: #ffc40000;
+  border: 3px solid #6200ff;
   
 
 }
