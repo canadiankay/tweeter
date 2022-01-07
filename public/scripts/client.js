@@ -4,6 +4,21 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+$(document).ready(function() {
+  // function that loops over existing tweets and adds them to the top of the tweets container
+  const renderTweets = function(tweets) {
+    $('#tweets-container').empty();
+    // loops through tweets
+    for (let tweet of tweets) {
+
+    // calls createTweetElement for each tweet
+    // takes return value and appends it to the tweets container
+      $('#tweets-container').prepend(createTweetElement(tweet));
+    }
+  };
+});
+
+
 // escape function that prevents cross-site scripting
 const escape = function (str) {
   let div = document.createElement("div");
@@ -42,19 +57,7 @@ const createTweetElement = function(tweet) {
   </article>`)
   return $tweet;
 }
-$(document).ready(function() {
-  // function that loops over existing tweets and adds them to the top of the tweets container
-  const renderTweets = function(tweets) {
-    $('#tweets-container').empty();
-    // loops through tweets
-    for (let tweet of tweets) {
 
-    // calls createTweetElement for each tweet
-    // takes return value and appends it to the tweets container
-      $('#tweets-container').prepend(createTweetElement(tweet));
-    }
-  };
-});
 
 //AJAX call to fetch/load tweets
 const loadTweets = function() {
