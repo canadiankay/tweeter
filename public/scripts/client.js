@@ -45,6 +45,7 @@ const createTweetElement = function(tweet) {
 $(document).ready(function() {
   // function that loops over existing tweets and adds them to the top of the tweets container
   const renderTweets = function(tweets) {
+    $('#tweets-container').empty();
     // loops through tweets
     for (let tweet of tweets) {
 
