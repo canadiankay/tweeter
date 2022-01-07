@@ -4,6 +4,7 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// this function creates a new tweet
 const createTweetElement = function(tweet) {
   const time = timeago.format(tweet.created_at);
   let $tweet = (`
@@ -34,19 +35,20 @@ const createTweetElement = function(tweet) {
   </article>`)
   return $tweet;
 }
-
+$(document).ready(function() {
+  // function that loops over existing tweets and adds them to the top of the tweets container
   const renderTweets = function(tweets) {
-  $(document).ready(function() {
     // loops through tweets
     for (let tweet of tweets) {
+
     // calls createTweetElement for each tweet
     // takes return value and appends it to the tweets container
       $('#tweets-container').prepend(createTweetElement(tweet));
     }
-  });
-};
+  };
+});
 
-//ajax post request for event listener 
+//event handler for submitting new tweets 
 $(document).ready(function() {
   $('.tweet-form').submit(function(event) {
     event.preventDefault();
@@ -56,43 +58,45 @@ $(document).ready(function() {
     The form should not submit*/ 
 
     const tweetLength = $('#tweet-text').val().length;
-    const maxChars = 140;
 
     //empty tweet
-    if (tweetLength === 0) {
+    if (!tweetLength) {
       alert("This is a blank tweet!");
       return;
     }
 
     // if tweet exceeds character limit
-    if (tweetLength > maxChars) {
+    if (tweetLength > 140) {
       alert("This tweet exceeds the character limit!");
       return;
     }
 
-    //submit tweet
-    if (tweetLength <= maxChars) {
-    const url: "http://localhost:8080/tweets/";
-
+    //submit tweet and reset counter if there are no errors
     const dataForm = $(this).serialize();
-    $.post(url, dataForm, function(data) {
-      console.log(dataForm);
+    $.post("/tweets", dataForm.then(), function(data) {
       loadTweets();
-      });
-    }
+
+      //reset counter
+      $(".counter").text(140);
+
+      //empty out the text area once tweet is submitted
+      $("#tweet-text").val("");
+
+    });
  });
 });
 
   
 
-  //load tweets AJAX get request
+  //AJAX call to fetch/load tweets
   const loadTweets = function() {
-    const url = "http://localhost:8080/tweets";
-    $.get(url, function(data) {
+    //const url = "http://localhost:8080/tweets";
+    $.get("/tweets", function(data) {
       renderTweets(data.responseJSON);
     });
   };
 
+  //loads initial tweets on refresh
   loadTweets();
 
 
