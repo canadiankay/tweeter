@@ -50,21 +50,48 @@ const createTweetElement = function(tweet) {
 $(document).ready(function() {
   $('.tweet-form').submit(function(event) {
     event.preventDefault();
+    /*The user should be given an error that their tweet content is too long or that it is not present
+    (ideally separate messages for each scenario)
+    The form should not be cleared
+    The form should not submit*/ 
+
+    const tweetLength = $('#tweet-text').val().length;
+    const maxChars = 140;
+
+    //empty tweet
+    if (tweetLength === 0) {
+      alert("This is a blank tweet!");
+      return;
+    }
+
+    // if tweet exceeds character limit
+    if (tweetLength > maxChars) {
+      alert("This tweet exceeds the character limit!");
+      return;
+    }
+
+    //submit tweet
+    if (tweetLength <= maxChars) {
     const url: "http://localhost:8080/tweets/";
+
     const dataForm = $(this).serialize();
     $.post(url, dataForm, function(data) {
       console.log(dataForm);
       loadTweets();
-    });
-  });
+      });
+    }
+ });
+});
+
+  
 
   //load tweets AJAX get request
   const loadTweets = function() {
     const url = "http://localhost:8080/tweets";
     $.get(url, function(data) {
       renderTweets(data.responseJSON);
-    }
-  });
+    });
+  };
 
   loadTweets();
 
