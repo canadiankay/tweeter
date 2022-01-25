@@ -4,6 +4,13 @@
  * Reminder: Use (and do all your DOM work in) jQuery's document ready function
  */
 
+// escape function that prevents cross-site scripting
+const escape = function (str) {
+  let div = document.createElement("div");
+  div.appendChild(document.createTextNode(str));
+  return div.innerHTML;
+};
+
 $(document).ready(function() {
   // function that loops over existing tweets and adds them to the top of the tweets container
   const renderTweets = function(tweets) {
@@ -18,14 +25,6 @@ $(document).ready(function() {
   };
 });
 
-
-// escape function that prevents cross-site scripting
-const escape = function (str) {
-  let div = document.createElement("div");
-  div.appendChild(document.createTextNode(str));
-  return div.innerHTML;
-};
-
 // this function creates a new tweet
 const createTweetElement = function(tweet) {
   const time = timeago.format(tweet.created_at);
@@ -34,7 +33,7 @@ const createTweetElement = function(tweet) {
     <header class="tweet-profile">
       <div class="user-tweeter">
         <img src=${tweet.user.avatars}>
-        <p>${tweet.user.handle}</p>
+        <p>${tweet.user.name}</p>
       </div>
   
       <div class="ownerOfTweet">${tweet.user.handle}</div>
@@ -59,6 +58,13 @@ const createTweetElement = function(tweet) {
 }
 
 
+
+
+
+
+
+
+
 //AJAX call to fetch/load tweets
 const loadTweets = function() {
   //const url = "http://localhost:8080/tweets";
@@ -72,7 +78,6 @@ const loadTweets = function() {
 loadTweets();
 
 //event handler for submitting new tweets 
-$(document).ready(function() {
   $('.tweet-form').submit(function(event) {
     event.preventDefault();
     //we don't want an error box if we are submitting a tweet 
@@ -121,7 +126,7 @@ $(document).ready(function() {
 
     });
  });
-});
+
 
   
 
