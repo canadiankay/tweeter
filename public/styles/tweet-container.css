@@ -8,23 +8,39 @@ article {
   font-family: "Source Sans Pro", sans-serif;
   font-weight: 250;
   word-wrap: break-word;
-
 }
 
 article:hover{
   box-shadow: 4px 8px #0532ad86;
 }
 
+
 .tweet-profile {
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
+
+article > header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
 .user-tweeter {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+
+article > p {
+  display: flex;
+  opacity: 0.8;
+  justify-content: space-between;
+}
+
+
 .ownerOfTweet {
   opacity: 0.5;
 }

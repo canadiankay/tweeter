@@ -16,6 +16,15 @@ label {
   font-weight: 600;
 }
 
+.tweet-box > textarea {
+  height: auto;
+  background-color: transparent;
+  border: none;
+  resize: none;
+  outline: none;
+  font-weight: 600;
+}
+
 #tweet-text{
   background-color: #f4f1ec;;
   width: 100%;
@@ -46,6 +55,12 @@ textarea {
   font-size: 15px;
   width: 100%;
 
+}
+
+form > div {
+  display: flex;
+  padding-top: 20px;
+  justify-content: space-between;
 }
 
  .counter {
