@@ -22,12 +22,12 @@ This repository was forked and cloned, then built upon to practice using front-e
 
 ## The Finished Product
 
-### Home Page
+## Home Page
 !["Screenshot of the home page- Desktop View"] (https://github.com/canadiankay/tweeter/blob/master/docs/Home-Desktop.png?raw=true)
 
 !["Tablet View- resized"] (https://github.com/canadiankay/tweeter/blob/master/docs/Home-Mobile.png?raw=true)
 
-### Error Handling Messages
+## Error Handling Messages
 
 !["If tweet is empty"] (https://github.com/canadiankay/tweeter/blob/master/docs/ErrorMsg-for-empty-tweet.png?raw=true)
 
