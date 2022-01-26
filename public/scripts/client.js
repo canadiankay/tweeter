@@ -22,21 +22,20 @@ $(document).ready(function() {
       $('#tweets-container').prepend($newTweet);
     }
   };
-});
 
 // this function creates a new tweet
 const createTweetElement = function(tweet) {
   const time = timeago.format(tweet.created_at);
   let $tweet = (`
   <article class="tweet">
-    <header class="tweet-profile">
+    <div class="tweet-profile">
       <div class="user-tweeter">
         <img src='${tweet.user.avatars}'>
         <p>${tweet.user.name}</p>
       </div>
   
       <div class="ownerOfTweet">${tweet.user.handle}</div>
-    </header>      
+    </div>      
 
     <div class="tweetText">
     ${escape(tweet.content.text)}
@@ -119,17 +118,17 @@ loadTweets();
       error: (err) => console.log(`Error: ${err}!`)
     })
 
-      .then(loadTweets);
+      .then(() => { loadTweets()
     //reset counter
     $(".counter").text(140);
     
     //empty out the text area once tweet is submitted
     $("#tweet-text").val("");
-
+    })
 
   });
 
-
+});
 
   
 

@@ -38,3 +38,33 @@ html {
   margin-right: auto;
 }
 
+
+/*desktop   set a media query to a min width 1024 px
+  add two classes
+  1. .container add CSS proprety float right
+  header float left 
+*/
+
+/* defautl will be mobile */
+
+/* Desktop view */
+@media (min-width: 1024px) {
+  body {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  body > header {
+    width: 35%;
+    margin: 150px 0px 0px 1em;
+    float: left;
+    padding-top: 0%;
+  }
+  .container {
+    width: 40%;
+    float: right;
+    margin: 150px 100px 0px 0px;
+  }
+}
+
+
+

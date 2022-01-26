@@ -26,7 +26,7 @@ label {
 }
 
 #tweet-text{
-  background-color: #f4f1ec;;
+  background-color: transparent;
   width: 100%;
   border: transparent;
   outline: none;
@@ -48,12 +48,12 @@ button {
 }
 
 textarea {
-  background-color : #994f13a2; 
-  border: transparent;
-  color: black;
-  font-weight: 100;
-  font-size: 15px;
+  background-color: #f4f1ec;
   width: 100%;
+  border: transparent;
+  outline: none;
+  font-weight: 8px;
+  color:#994f13a2; 
 
 }
 
