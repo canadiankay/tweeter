@@ -39,13 +39,7 @@ html {
 }
 
 
-/*desktop   set a media query to a min width 1024 px
-  add two classes
-  1. .container add CSS proprety float right
-  header float left 
-*/
-
-/* defautl will be mobile */
+/* default will be mobile */
 
 /* Desktop view */
 @media (min-width: 1024px) {

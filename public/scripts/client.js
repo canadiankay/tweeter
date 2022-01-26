@@ -14,11 +14,8 @@ const escape = function (str) {
 $(document).ready(function() {
   // function that loops over existing tweets and adds them to the top of the tweets container
   const renderTweets = function(tweets) {
-    // loops through tweets
     for (let tweet of tweets) {
-    // calls createTweetElement for each tweet
     const $newTweet = createTweetElement(tweet);
-    // takes return value and appends it to the tweets container
       $('#tweets-container').prepend($newTweet);
     }
   };
@@ -77,14 +74,9 @@ loadTweets();
     //we don't want an error box if we are submitting a tweet 
     $("#error").slideUp()
 
-
-    /*The user should be given an error that their tweet content is too long or that it is not present
-    (ideally separate messages for each scenario)
-    The form should not be cleared
-    The form should not submit*/ 
     let tweetLength = $('#tweet-text').val().length;
 
-    //empty tweet
+    //empty tweet error message
     if (tweetLength === 0) {
       $("#error").slideDown("slow");
       $("#error").html("You cannot submit an empty tweet. C'mon pour your heart out!");
@@ -94,7 +86,6 @@ loadTweets();
       return;
     }
   
-
     // if tweet exceeds character limit
     if (tweetLength > 140) {
       $("#error").slideDown("slow");
@@ -117,7 +108,6 @@ loadTweets();
       },
       error: (err) => console.log(`Error: ${err}!`)
     })
-
       .then(() => { loadTweets()
     //reset counter
     $(".counter").text(140);
@@ -127,11 +117,7 @@ loadTweets();
     })
 
   });
-
 });
-
-  
-
 
 
 
