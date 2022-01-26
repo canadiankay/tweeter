@@ -23,14 +23,14 @@ This repository was forked and cloned, then built upon to practice using front-e
 ## The Finished Product
 
 ## Home Page
-!["Screenshot of the home page- Desktop View"] (https://github.com/canadiankay/tweeter/blob/master/docs/Home-Desktop.png?raw=true)
+!["Homepage-Desktop"] (https://raw.githubusercontent.com/canadiankay/tweeter/master/docs/Home-Desktop.png)
 
-!["Tablet View- resized"] (https://github.com/canadiankay/tweeter/blob/master/docs/Home-Mobile.png?raw=true)
+!["HomePage-Mobile"] (https://raw.githubusercontent.com/canadiankay/tweeter/master/docs/Home-Mobile.png)
 
 ## Error Handling Messages
 
-!["If tweet is empty"] (https://github.com/canadiankay/tweeter/blob/master/docs/ErrorMsg-for-empty-tweet.png?raw=true)
+!["ErrorMsg-EmptyTweet"] (https://raw.githubusercontent.com/canadiankay/tweeter/master/docs/ErrorMsg-for-empty-tweet.png)
 
-!["If tweet is over 140 characters"] (https://github.com/canadiankay/tweeter/blob/master/docs/ErrorMsg-for-long-tweet.png?raw=true)
+!["ErrorMsg-LongTweet"] (https://raw.githubusercontent.com/canadiankay/tweeter/master/docs/ErrorMsg-for-long-tweet.png)
 
 
