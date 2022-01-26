@@ -14,13 +14,12 @@ const escape = function (str) {
 $(document).ready(function() {
   // function that loops over existing tweets and adds them to the top of the tweets container
   const renderTweets = function(tweets) {
-    $('#tweets-container').empty();
     // loops through tweets
     for (let tweet of tweets) {
-
     // calls createTweetElement for each tweet
+    const $newTweet = createTweetElement(tweet);
     // takes return value and appends it to the tweets container
-      $('#tweets-container').prepend(createTweetElement(tweet));
+      $('#tweets-container').prepend($newTweet);
     }
   };
 });
@@ -32,7 +31,7 @@ const createTweetElement = function(tweet) {
   <article class="tweet">
     <header class="tweet-profile">
       <div class="user-tweeter">
-        <img src=${tweet.user.avatars}>
+        <img src='${tweet.user.avatars}'>
         <p>${tweet.user.name}</p>
       </div>
   
@@ -57,28 +56,24 @@ const createTweetElement = function(tweet) {
   return $tweet;
 }
 
-
-
-
-
-
-
-
-
 //AJAX call to fetch/load tweets
 const loadTweets = function() {
-  //const url = "http://localhost:8080/tweets";
-  $.get("/tweets", function(data) {
-    renderTweets(data.responseJSON);
+  $.ajax({
+    url: "http://localhost:8080/tweets", 
+    method: "get", 
+    success: (tweets) => {
+      $(`#tweets-container`).empty()
+      renderTweets(tweets)
+    },
+    error: (err) => console.log(`error: ${err}`)
   });
-  $("#tweets-container").slideDown();
 };
-
 //loads initial tweets on refresh
 loadTweets();
 
+
 //event handler for submitting new tweets 
-  $('.tweet-form').submit(function(event) {
+  $('.tweet-form').on('submit', function(event) {
     event.preventDefault();
     //we don't want an error box if we are submitting a tweet 
     $("#error").slideUp()
@@ -88,12 +83,10 @@ loadTweets();
     (ideally separate messages for each scenario)
     The form should not be cleared
     The form should not submit*/ 
-
-
-    const tweetLength = $('#tweet-text').val().length;
+    let tweetLength = $('#tweet-text').val().length;
 
     //empty tweet
-    if (!tweetLength) {
+    if (tweetLength === 0) {
       $("#error").slideDown("slow");
       $("#error").html("You cannot submit an empty tweet. C'mon pour your heart out!");
       setTimeout(function() {
@@ -115,17 +108,27 @@ loadTweets();
 
     //submit tweet and reset counter if there are no errors
     const dataForm = $(this).serialize();
-    $.post("/tweets", dataForm.then(), function(data) {
-      loadTweets();
 
-      //reset counter
-      $(".counter").text(140);
+    $.ajax({
+      url: 'http://localhost:8080/tweets',
+      method: 'POST',
+      data: dataForm,
+      success: function() {
+        console.log("This was successful!")
+      },
+      error: (err) => console.log(`Error: ${err}!`)
+    })
 
-      //empty out the text area once tweet is submitted
-      $("#tweet-text").val("");
+      .then(loadTweets);
+    //reset counter
+    $(".counter").text(140);
+    
+    //empty out the text area once tweet is submitted
+    $("#tweet-text").val("");
 
-    });
- });
+
+  });
+
 
 
   
